@@ -55,53 +55,66 @@ fun main() {
 // Etapa 1
 fun calcularPromedio(nota1: Double, nota2: Double): Double {
     // Implementar aquí
-    return 0.0
+    return (nota1 + nota2) / 2
 }
 
 fun esAprobado(nota: Double): Boolean {
     // Implementar aquí
-    return false
+    if (nota >= 6){
+        return true 
+    } else {
+        return false
+    }
 }
 
 // Etapa 2
 fun calcularPromedioTresNotas(nota1: Double, nota2: Double, nota3: Double): Double {
     // Implementar aquí
-    return 0.0
+    return (nota1 + nota2 + nota3) / 3
 }
 
 fun obtenerEstadoAlumno(nombre: String, apellido: String, nota: Double): String {
     // Implementar aquí
-    return ""
+    val estado = if (nota >= 6) "está aprobado" else "está desaprobado"
+    return "El alumno $nombre $apellido $estado"
 }
 
 // Etapa 3
 fun calcularPromedioCurso(notas: List<Double>): Double {
     // Implementar aquí
-    return 0.0
+    if (notas.isEmpty()) return 0.0
+    return notas.sum() / notas.size
 }
 
 fun obtenerAlumnosAprobados(nombres: List<String>, notas: List<Double>): List<String> {
     // Implementar aquí
-    return emptyList()
+    val aprobados = mutableListOf<String>()
+    for (i in nombres.indices) {
+        if (notas[i] >= 6.0) {
+            aprobados.add(nombres[i])
+        }
+    }
+    return aprobados
 }
 
 // Etapa 4
 fun generarBoletin(nombre: String, materias: List<String>, notas: List<Double>): String {
-    // Implementar aquí
-    return ""
+    val boletin = StringBuilder()
+    boletin.append("Boletín de: $nombre\n")
+    for (i in materias.indices) {
+        boletin.append("${materias[i]}: ${notas[i]}\n")
+    }
+    return boletin.toString()
 }
 
 fun obtenerNotaMasAlta(notas: List<Double>): Double {
-    // Implementar aquí
-    return 0.0
+    return notas.maxOrNull() ?: 0.0
 }
 
 fun obtenerNotaMasBaja(notas: List<Double>): Double {
-    // Implementar aquí
-    return 0.0
+    return notas.minOrNull() ?: 0.0
 }
 
 fun contarAprobados(notas: List<Double>): Int {
-    // Implementar aquí
-    return 0
+    return notas.count { it >= 6.0 }
 }
